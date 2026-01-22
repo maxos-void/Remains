@@ -1,6 +1,17 @@
 name: Remains
 version: '1.0'
 main: me.maxos.stalker.remains.Remains
-api-version: '1.18'
-prefix: VotiveLockingDoors
+api-version: '1.16'
+
+commands:
+  remains:
+    aliases:
+      - rm
+    permission: remains.use
+
+permissions:
+  remains.use:
+    default: op
+
+prefix: Remains
 website: t.me/official_maxos

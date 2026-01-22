@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.util.UUID
 
-class DeadBodyCreator(
+class StandCreator(
 	private val storage: DeadBodyStorage
 ) {
 
