@@ -3,11 +3,17 @@ version: '1.0'
 main: me.maxos.stalker.remains.Remains
 api-version: '1.16'
 
+softdepend:
+  - Multiverse-Core
+
+load: POSTWORLD
+
 commands:
   remains:
     aliases:
       - rm
     permission: remains.use
+    usage: "Использование: remains spawn | remains remove"
 
 permissions:
   remains.use:

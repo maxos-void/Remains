@@ -1,17 +1,14 @@
 package me.maxos.stalker.remains.item
 
 import me.maxos.stalker.remains.file.config.model.RemainsItemsConfig
+import me.maxos.stalker.remains.utils.debug.Debuger.sendDebug
+import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 class ItemHeadManager(
-	private val remainsItemsConfig: RemainsItemsConfig
+	private val remainsItemsConfig: RemainsItemsConfig?
 ) {
-
-	fun getItem(): ItemStack {
-		return if (remainsItemsConfig.random) itemHeads.random().clone()
-		else itemHeads.first().clone()
-	}
-
+	private val default = ItemStack(Material.PLAYER_HEAD)
 	private val itemHeads = hashSetOf<ItemStack>()
 
 	init {
@@ -19,6 +16,7 @@ class ItemHeadManager(
 	}
 
 	private fun createItemStacks() {
+		remainsItemsConfig ?: return
 		itemHeads.addAll(
 			remainsItemsConfig.items.map { itemModel ->
 				ItemStack(itemModel.material).apply {
@@ -29,4 +27,20 @@ class ItemHeadManager(
 			}
 		)
 	}
+
+	fun getItem(): ItemStack {
+		remainsItemsConfig ?: run {
+			sendDebug("Конфиг предметов не обнаружен, выбираем стандартный ItemStack")
+			return default
+		}
+		return if (remainsItemsConfig.random) {
+			sendDebug("Рандом включен, выбираем ItemStack")
+			itemHeads.random().clone()
+		}
+		else {
+			sendDebug("Рандом выключен, берём первый из списка ItemStack")
+			itemHeads.first().clone()
+		}
+	}
+
 }

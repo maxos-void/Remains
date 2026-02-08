@@ -48,6 +48,36 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/*.kotlin_module</exclude>
+                                        <exclude>META-INF/*.kotlin_builtins</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <!-- КРИТИЧЕСКИ ВАЖНО: РЕЛОКАЦИЯ KOTLIN! -->
+                            <relocations>
+                                <relocation>
+                                    <pattern>kotlin</pattern>
+                                    <shadedPattern>me.maxos.stalker.remains.lib.kotlin</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.jetbrains</pattern>
+                                    <shadedPattern>me.maxos.stalker.remains.lib.jetbrains</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.intellij</pattern>
+                                    <shadedPattern>me.maxos.stalker.remains.lib.intellij</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -82,6 +112,11 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed</artifactId>
+            <version>0.17.14</version>
         </dependency>
     </dependencies>
 </project>

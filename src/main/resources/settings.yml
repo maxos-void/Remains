@@ -13,5 +13,26 @@ remains-items: # предметы, которые ставятся на голо
 
 inventory:
   size: 45 # размер инвентаря трупа
-  title: "&0Труп игрока {player-name}" # заголовок инвентаря
+  title-remain: "&0Труп игрока {player-name}" # заголовок инвентаря трупа
+  title-sleeper: "&0Слиппер игрока {player-name}" # заголовок инвентаря слиппера
   random: true # раскидывать ли предметы по случайным слотам инвентаря
+
+cleaning-settings:
+  remains:
+    isTimer: true
+    timer: 120
+  sleeper:
+    isTimer: true
+    timer: 120
+
+stand-settings:
+  gravity: true
+  position:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+
+different-settings:
+  debug: true # подробное логирование
+  db-save-delay: 60 # частота вызова сохранения базы данных (в секундах)
+  data-save-delay: 60 # частота вызова сохранения uuid трупов в uuids.json (в секундах)

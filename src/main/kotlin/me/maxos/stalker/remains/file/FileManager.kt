@@ -2,11 +2,13 @@ package me.maxos.stalker.remains.file
 
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.io.IOException
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
+import java.util.UUID
 import java.util.logging.Level
 import java.util.logging.Logger
 
